@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFLearningApp.Models.Exceptions;
+using WPFLearningApp.Models.Window2;
 
 namespace WPFLearningApp
 {
@@ -13,5 +15,32 @@ namespace WPFLearningApp
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            Hotel hotel = new Hotel("OnTheShore");
+            try
+            {
+                hotel.MakeReservation(
+                new Reservation(
+                    new RoomID(1, 4),
+                    "Landon",
+                    new DateTime(2000, 1, 1),
+                    new DateTime(2000, 1, 2)));
+                hotel.MakeReservation(
+                    new Reservation(
+                        new RoomID(1, 4),
+                        "Landon",
+                        new DateTime(2000, 1, 1),
+                        new DateTime(2000, 1, 4)));
+            }
+            catch(ReservationConflictException ex)
+            {
+
+            }
+
+            IEnumerable<Reservation> reservations = hotel.GetReservationsForUser("Landon");
+
+            base.OnStartup(e);
+        }
     }
 }

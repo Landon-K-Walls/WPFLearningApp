@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFLearningApp.Windows;
 
 namespace WPFLearningApp
 {
@@ -20,9 +21,28 @@ namespace WPFLearningApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        Window1 _window1;
+        Window2 _window2;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void openWindow1(object sender, RoutedEventArgs e)
+        {
+            _window1 = new Window1();
+            _window1.Show();
+        }
+        private void openWindow2(object sender, RoutedEventArgs e)
+        {
+            _window2 = new Window2();
+            _window2.Show();
+        }
+
+        void openWindow3(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

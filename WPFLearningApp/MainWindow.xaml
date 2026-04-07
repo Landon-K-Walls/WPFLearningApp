@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:WPFLearningApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="380"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Width="200" Grid.Column="0" Grid.Row="1">
+            <Button x:Name="window1Button" Height="25px" Width="100px" VerticalAlignment="Center" Click="openWindow1">Window 1</Button>
+        </StackPanel>
+        <StackPanel Width="200" Grid.Column="1" Grid.Row="1">
+            <Button x:Name="window2Button" Height="25px" Width="100px" VerticalAlignment="Center" Click="openWindow2">Window 2</Button>
+        </StackPanel>
     </Grid>
 </Window>

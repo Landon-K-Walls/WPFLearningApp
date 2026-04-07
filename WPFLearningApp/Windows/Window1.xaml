@@ -11,6 +11,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <Button 
@@ -20,5 +21,12 @@
             </Button>
         </StackPanel>
         <ComboBox x:Name="ExampleComboBox" Grid.Row="2" Width="150" IsReadOnly="false" IsEditable="True" SelectionChanged="ExampleComboBox_SelectionChanged"/>
+        <Expander Grid.Row="3" IsExpanded="false">
+            <StackPanel>
+                <Grid>
+                    <TextBlock>This is a textblock inside an expander</TextBlock>
+                </Grid>
+            </StackPanel>
+        </Expander>
     </Grid>
 </Window>

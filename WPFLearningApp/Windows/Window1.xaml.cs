@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,32 @@ namespace WPFLearningApp.Windows
         public Window1()
         {
             InitializeComponent();
+
+            string[] comboItems = new[]
+            {
+                "Coke",
+                "Pepsi",
+                "Mountain Dew",
+                "DR. Pepper"
+            };
+
+            ExampleComboBox.ItemsSource = comboItems;
+        }
+
+        private void UploadButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            bool? openFile = ofd.ShowDialog();
+            if(openFile == true)
+            {
+                MessageBox.Show($"{ofd.FileName}");
+            }
+        }
+
+        private void ExampleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MessageBox.Show(
+                ExampleComboBox.SelectedItem.ToString());
         }
     }
 }

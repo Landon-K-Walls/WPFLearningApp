@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Button 
+                x:Name="UploadButton"
+                Click="UploadButton_Click">
+                Choose a file to upload
+            </Button>
+        </StackPanel>
+        <ComboBox x:Name="ExampleComboBox" Grid.Row="2" Width="150" IsReadOnly="false" IsEditable="True" SelectionChanged="ExampleComboBox_SelectionChanged"/>
     </Grid>
 </Window>

@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFLearningApp.Windows"
+        xmlns:local="clr-namespace:WPFLearningApp.Windows" xmlns:views="clr-namespace:WPFLearningApp.Views"
         mc:Ignorable="d"
-        Title="Window2" Height="450" Width="800">
-    <Grid>
-        
+        Title="Window2" Height="450" Width="800" FontSize="14">
+    <Grid Margin="20 10" MaxWidth="600">
+        <!--views:MakeReservationView/-->
+        <views:ReservationListingView></views:ReservationListingView>
     </Grid>
 </Window>

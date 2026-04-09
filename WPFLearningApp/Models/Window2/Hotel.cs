@@ -18,8 +18,8 @@ namespace WPFLearningApp.Models.Window2
             _reservationBook = new ReservationBook();
         }
 
-        public IEnumerable<Reservation> GetReservationsForUser(string username) =>
-             _reservationBook.GetReservationsForUser(username);
+        public IEnumerable<Reservation> GetAllReservations() =>
+             _reservationBook.GetAllReservations();
 
         public void MakeReservation(Reservation reservation) => 
             _reservationBook.AddReservation(reservation);

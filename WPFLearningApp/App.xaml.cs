@@ -17,28 +17,7 @@ namespace WPFLearningApp
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Hotel hotel = new Hotel("OnTheShore");
-            try
-            {
-                hotel.MakeReservation(
-                new Reservation(
-                    new RoomID(1, 4),
-                    "Landon",
-                    new DateTime(2000, 1, 1),
-                    new DateTime(2000, 1, 2)));
-                hotel.MakeReservation(
-                    new Reservation(
-                        new RoomID(1, 4),
-                        "Landon",
-                        new DateTime(2000, 1, 1),
-                        new DateTime(2000, 1, 4)));
-            }
-            catch(ReservationConflictException ex)
-            {
-
-            }
-
-            IEnumerable<Reservation> reservations = hotel.GetReservationsForUser("Landon");
+            
 
             base.OnStartup(e);
         }

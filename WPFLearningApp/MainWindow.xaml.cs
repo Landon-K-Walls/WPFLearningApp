@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFLearningApp.Windows;
+using WPFLearningApp.ViewModels;
 
 namespace WPFLearningApp
 {
@@ -36,7 +37,10 @@ namespace WPFLearningApp
         }
         private void openWindow2(object sender, RoutedEventArgs e)
         {
-            _window2 = new Window2();
+            _window2 = new Window2()
+            {
+                DataContext = new MainViewModel()
+            };
             _window2.Show();
         }
 

@@ -19,7 +19,7 @@ namespace WPFLearningApp.Models.Window2
 
         public override string ToString()
         {
-            return $"{FloorNumber}_{RoomNumber}";
+            return $"{FloorNumber}, {RoomNumber}";
         }
 
         public override bool Equals(object obj)

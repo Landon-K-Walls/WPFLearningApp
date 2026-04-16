@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using WPFLearningApp.Commands;
+using WPFLearningApp.Models.Window2;
 
 namespace WPFLearningApp.ViewModels
 {
@@ -65,12 +67,21 @@ namespace WPFLearningApp.ViewModels
             }
         }
 
+        public Reservation PullReservationData() =>
+            new Reservation(
+                new RoomID(
+                    _floorNumber,
+                    _roomNumber),
+                _username,
+                _startDate,
+                _endDate);
+
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public MakeReservationViewModel()
+        public MakeReservationViewModel(Hotel hotel)
         {
-
+            SubmitCommand = new MakeReservationCommand(this, hotel);
         }
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFLearningApp.Windows;
 using WPFLearningApp.ViewModels;
+using WPFLearningApp.Models.Window2;
 
 namespace WPFLearningApp
 {
@@ -25,9 +26,12 @@ namespace WPFLearningApp
         Window1 _window1;
         Window2 _window2;
 
+        private readonly Hotel _hotel;
+
         public MainWindow()
         {
             InitializeComponent();
+            _hotel = new Hotel("Town Bicycle Hotel");
         }
 
         private void openWindow1(object sender, RoutedEventArgs e)
@@ -39,7 +43,7 @@ namespace WPFLearningApp
         {
             _window2 = new Window2()
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(_hotel)
             };
             _window2.Show();
         }

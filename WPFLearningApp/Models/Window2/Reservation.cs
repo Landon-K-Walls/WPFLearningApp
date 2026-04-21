@@ -29,5 +29,10 @@ namespace WPFLearningApp.Models.Window2
 
             return reservation.StartDate < EndDate || reservation.EndDate > StartDate;
         }
+
+        public override string ToString()
+        {
+            return $"Reservation:{{RoomID:[{RoomID}], Username:\"{Username}\", StartDate:\"{StartDate.ToString("d")}\", EndDate:\"{EndDate.ToString("d")}\"}}";
+        }
     }
 }

@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Input;
 using WPFLearningApp.Commands;
 using WPFLearningApp.Models.Window2;
+using WPFLearningApp.Services;
+using WPFLearningApp.Stores;
 
 namespace WPFLearningApp.ViewModels
 {
@@ -23,7 +25,11 @@ namespace WPFLearningApp.ViewModels
             }
         }
 
+        
         private int _roomNumber;
+        /// <summary>
+        /// Gets or sets the number of the room to be reserved within the view model.
+        /// </summary>
         public int RoomNumber
         {
             get { return _roomNumber; }
@@ -45,7 +51,7 @@ namespace WPFLearningApp.ViewModels
             }
         }
 
-        private DateTime _startDate;
+        private DateTime _startDate = DateTime.Today;
         public DateTime StartDate
         {
             get { return _startDate; }
@@ -56,7 +62,7 @@ namespace WPFLearningApp.ViewModels
             }
         }
 
-        private DateTime _endDate;
+        private DateTime _endDate = DateTime.Today;
         public DateTime EndDate
         {
             get { return _endDate; }
@@ -67,6 +73,17 @@ namespace WPFLearningApp.ViewModels
             }
         }
 
+        public bool ReservationIsValid =>
+            !string.IsNullOrWhiteSpace(_username)
+            && _floorNumber >= 0
+            && _roomNumber >= 0
+            && _startDate.Date >= DateTime.Today.Date
+            && _endDate.Date >= _startDate.Date;
+
+        /// <summary>
+        /// Creates and returns a new <c>Reservation</c> instance from the view model
+        /// </summary>
+        /// <returns></returns>
         public Reservation PullReservationData() =>
             new Reservation(
                 new RoomID(
@@ -79,9 +96,10 @@ namespace WPFLearningApp.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public MakeReservationViewModel(Hotel hotel)
+        public MakeReservationViewModel(Hotel hotel, NavigationStore navigationStore, Func<ReservationListingViewModel> makeReservationViewModel)
         {
-            SubmitCommand = new MakeReservationCommand(this, hotel);
+            SubmitCommand = new MakeReservationCommand(this, hotel, new NavigationService(navigationStore, makeReservationViewModel));
+            CancelCommand = new NavigateCommand(new NavigationService(navigationStore, makeReservationViewModel));
         }
     }
 }
